@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<!--
+
+알콜 혈중농도 공식
+C = A / (P * R)
+C : 혈중농도 최고치
+A : 운전자가 섭취한 알콜양
+		(음주량 * 술의 농도 * 0.7984)
+P : 사람 체중
+R : 성별계수 (남: 0.7, 여: 0.6)
+
+> 혈중 알콜 농도는 음주 후 30분 부터 최대치.
+> 혈중 알콜 농도는 최대치 이후 시간 당 0.015% 감소.
+
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>혈중알콜농도 계산하기</title>
+	</head>
+	<body>
+		<h1> 혈중 알콜 농도 계산하기</h1>
+
+		<p>성별</p>
+		<input name="gender" type="radio">남
+		<input name="gender" type="radio">여
+
+		<p>몸무게</p>
+		<input type="number">
+
+		<p>주량</p>
+		<p>맥주</p> <input id="맥주" value="0" min="0" max="5" step="0.5" type="range">
+		<p>소주</p> <input id="소주" value="0" min="0" max="5" step="0.5" type="range">
+		<p>막걸리</p> <input id="막걸리" value="0" min="0" max="5" step="0.5" type="range">
+
+		<p>음주 시간</p>
+		<input type="datetime-local">
+	</body>
+</html>
