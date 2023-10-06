@@ -30,14 +30,15 @@ function printResult() {
   var soju = document.getElementById("소주").value;
   var makgeolli = document.getElementById("막걸리").value;
   var drinkTime = document.getElementById("drinkTime").value;
-
+  var resultAlchol = document.getElementById("resultAlchol");
   var diffTime = getDiffTime(drinkTime);
-
+  var boundery = 0.08;
   var A =
     (beer * 355 * 0.045 + soju * 360 * 0.14 + makgeolli * 750 * 0.06) * 0.7984;
   var C = (0.7 * A) / (10 * P * R);
+  resultAlchol.innerText = C.toFixed(3);
   console.log("알콜 농도는: " + C);
-  resultTime = calculAlchol(diffTime, C);
+  resultTime = calculAlchol(diffTime, C, boundery);
   printTime(resultTime);
 }
 
@@ -49,12 +50,13 @@ function getDiffTime(drinkTime) {
   return diffTime;
 }
 
-function calculAlchol(diffTime, alchol) {
+function calculAlchol(diffTime, alchol, boundery) {
   var result;
   if (diffTime <= 90) {
-    result = (60 / 0.008) * (alchol - 0.05);
+    result = (60 / 0.008) * (alchol - boundery);
   } else {
-    result = (60 / 0.008) * (alchol - 0.05 - (0.008 / 60) * (diffTime - 90));
+    result =
+      (60 / 0.008) * (alchol - boundery - (0.008 / 60) * (diffTime - 90));
   }
   console.log("운전 가능 시간은: " + Math.ceil(result));
   return Math.ceil(result);
