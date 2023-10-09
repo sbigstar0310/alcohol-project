@@ -32,71 +32,90 @@ R : 성별계수 (남: 0.7, 여: 0.6)
   </head>
   <body>
     <header>
-      <p>혈중 알콜 농도 계산하기</p>
+      <div>혈중 알콜 농도 계산하기</div>
     </header>
 
     <main>
-      <h3>성별</h3>
-      <input name="gender" value="male" type="radio" required />남
-      <input name="gender" value="female" type="radio" required />여
+      <div class="genderChoice">
+        <h3>성별</h3>
+        <input name="gender" value="male" type="radio" required />남
+        <input name="gender" value="female" type="radio" required />여
+      </div>
 
-      <h3>몸무게</h3>
-      <input id="weight" type="number" step="0.1" required />
+      <div class="weightChoice">
+        <h3>몸무게</h3>
+        <input id="weight" type="number" step="0.1" required />
+      </div>
 
-      <h3>총 주량</h3>
-      <p>맥주</p>
-      <input
-        id="맥주"
-        value="0"
-        min="0"
-        max="5"
-        step="0.5"
-        type="range"
-        oninput="document.getElementById('resultBeer').innerHTML=this.value;"
-      />
-      <span id="resultBeer"></span>병
+      <div class="alcholChoice">
+        <h3>총 주량</h3>
+        <p>맥주</p>
+        <input
+          id="맥주"
+          value="0"
+          min="0"
+          max="5"
+          step="0.5"
+          type="range"
+          oninput="document.getElementById('resultBeer').innerHTML=this.value;"
+        />
+        <span id="resultBeer"></span>병
 
-      <p>소주</p>
-      <input
-        id="소주"
-        value="0"
-        min="0"
-        max="5"
-        step="0.5"
-        type="range"
-        oninput="document.getElementById('resultSoju').innerHTML=this.value;"
-      />
-      <span id="resultSoju"></span>병
+        <p>소주</p>
+        <input
+          id="소주"
+          value="0"
+          min="0"
+          max="5"
+          step="0.5"
+          type="range"
+          oninput="document.getElementById('resultSoju').innerHTML=this.value;"
+        />
+        <span id="resultSoju"></span>병
 
-      <p>막걸리</p>
-      <input
-        id="막걸리"
-        value="0"
-        min="0"
-        max="5"
-        step="0.5"
-        type="range"
-        oninput="document.getElementById('resultMakgeolli').innerHTML=this.value;"
-      />
-      <span id="resultMakgeolli"></span>병
+        <p>막걸리</p>
+        <input
+          id="막걸리"
+          value="0"
+          min="0"
+          max="5"
+          step="0.5"
+          type="range"
+          oninput="document.getElementById('resultMakgeolli').innerHTML=this.value;"
+        />
+        <span id="resultMakgeolli"></span>병
+      </div>
 
-      <h3>음주 시간</h3>
-      <input type="datetime-local" id="drinkTime" required />
-      <br />
-      <button onClick="printResult()">계산하기</button>
+      <div class="timeChoice">
+        <h3>음주 시간</h3>
+        <input type="datetime-local" id="drinkTime" required />
+      </div>
     </main>
 
     <aside>
-      <p>당신의 알콜 농도는 <span id="resultAlchol">0</span> 입니다.</p>
+      <p>당신의 현재 알콜 농도는 <span id="resultAlchol">0</span> 입니다.</p>
       <article>
-        알콜 농도 처벌 기준 <br />
-        0.03 ~ 0.08 : 1년 이하의 징역이나 500만원 이하의 벌금 <br />
-        0.08 ~ 0.2 : 1년 이상 2년 이하의 징역이나 500만원 이상 1천만원 이하의
-        벌금 <br />
-        0.2 ~ : 2년 이상 5년 이하의 징역이나 1천만원 이상 2천만원 이하의 벌금
-        <br />
-        출처: 도로교통법 <br />
+        <p>알콜 농도 처벌 기준</p>
+        <ui>
+          <li>
+            0.03 ~ 0.08 <br />
+            -> 1년 이하의 징역이나 500만원 이하의 벌금
+          </li>
+          <li>
+            0.08 ~ 0.2 <br />
+            -> 1년 이상 2년 이하의 징역이나 500만원 이상 1천만원 이하의 벌금
+          </li>
+          <li>
+            0.2 ~ <br />
+            -> 2년 이상 5년 이하의 징역이나 1천만원 이상 2천만원 이하의 벌금
+          </li>
+        </ui>
+        <p>출처: 도로교통법</p>
       </article>
     </aside>
+
+    <div class="calculateBtn">
+      <button id="calculateBtn" onClick="printResult()">계산하기</button>
+    </div>
   </body>
 </html>

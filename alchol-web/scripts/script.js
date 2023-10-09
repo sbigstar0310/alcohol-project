@@ -36,7 +36,7 @@ function printResult() {
   var A =
     (beer * 355 * 0.045 + soju * 360 * 0.14 + makgeolli * 750 * 0.06) * 0.7984;
   var C = (0.7 * A) / (10 * P * R);
-  resultAlchol.innerText = C.toFixed(3);
+  resultAlchol.innerText = calculPresentAlchol(C, diffTime);
   console.log("알콜 농도는: " + C);
   resultTime = calculAlchol(diffTime, C, boundery);
   printTime(resultTime);
@@ -60,6 +60,18 @@ function calculAlchol(diffTime, alchol, boundery) {
   }
   console.log("운전 가능 시간은: " + Math.ceil(result));
   return Math.ceil(result);
+}
+
+function calculPresentAlchol(C, diffTime) {
+  if (diffTime <= 90) {
+    return C.toFixed(3);
+  } else {
+    let result = C - ((diffTime - 90) * 0.008) / 60;
+    if (result < 0) {
+      return 0;
+    }
+    return result.toFixed(3);
+  }
 }
 
 function printTime(resultTime) {
